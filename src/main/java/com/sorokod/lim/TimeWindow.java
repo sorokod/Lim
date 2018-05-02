@@ -7,24 +7,28 @@ import static java.util.concurrent.TimeUnit.HOURS;
 import static java.util.concurrent.TimeUnit.MINUTES;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+/**
+ * Holds the size of the time window - size and time unit. Internally, size is represented
+ * in milliseconds. Valid time units are: HOURS, MINUTES and SECONDS.
+ */
 final class TimeWindow {
 
-    private final static EnumSet<TimeUnit> SUPPORTED_TIME_UNITS = EnumSet.of(HOURS, MINUTES, SECONDS);
+    private final static EnumSet<TimeUnit> VALID_TIME_UNITS = EnumSet.of(HOURS, MINUTES, SECONDS);
 
     private final int size;
     private final TimeUnit timeUnit;
     private final long sizeInMillis;
 
 
-    TimeWindow(int timeWindowSize, TimeUnit timeWindowUnit) {
+    TimeWindow(int size, TimeUnit timeUnit) {
 
-        if (!SUPPORTED_TIME_UNITS.contains(timeWindowUnit) ) {
-            throw new IllegalArgumentException("Supported TimeUnits are: " + SUPPORTED_TIME_UNITS);
+        if (!VALID_TIME_UNITS.contains(timeUnit) ) {
+            throw new IllegalArgumentException("Supported TimeUnits are: " + VALID_TIME_UNITS);
         }
 
-        this.size = timeWindowSize;
-        this.timeUnit = timeWindowUnit;
-        this.sizeInMillis = timeWindowUnit.toMillis(timeWindowSize);
+        this.size = size;
+        this.timeUnit = timeUnit;
+        this.sizeInMillis = timeUnit.toMillis(size);
     }
 
 

@@ -1,6 +1,6 @@
 # Lim
 
-Lim is a small Java library that implements a variant of the [Token_bucket](https://en.wikipedia.org/wiki/Token_bucket).
+Lim is a small Java library that implements a variant of the [Token bucket](https://en.wikipedia.org/wiki/Token_bucket).
 algorithm. It can be used to enforce HTTP call rate, limit the number of
 failed login attempts, implement [Circuit breaker](https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern)
 like logic, etc...
